@@ -16,4 +16,11 @@ min_value = 1.0
 max_value = 86400.0
 value = 1.0
 
+[node name="HSlider" type="HSlider" parent="."]
+offset_top = 32.0
+offset_right = 192.0
+offset_bottom = 48.0
+min_value = -100.0
+
 [connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]

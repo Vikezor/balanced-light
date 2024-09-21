@@ -13,3 +13,7 @@ func _process(delta: float) -> void:
 
 func _on_spin_box_value_changed(value: float) -> void:
 	Engine.time_scale = value
+
+
+func _on_h_slider_value_changed(value: float) -> void:
+	$Earth.thrust = value
