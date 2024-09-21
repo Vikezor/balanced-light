@@ -16,4 +16,4 @@ func _on_time_scale_value_changed(value: float) -> void:
 
 
 func _on_thrust_value_changed(value: float) -> void:
-	$Earth.thrust = value
+	$Earth.thrust = -value
