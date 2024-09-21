@@ -1,10 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://bh4w07tra8k0q"]
 
+[ext_resource type="Texture2D" uid="uid://yxkm4o813bik" path="res://earth/earth.tres" id="1_akn4t"]
 [ext_resource type="Script" path="res://earth/earth.gd" id="1_kfjld"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mcl7q"]
-size = Vector2(32, 32)
-
 [node name="Earth" type="Sprite2D"]
-texture = SubResource("PlaceholderTexture2D_mcl7q")
+texture_filter = 3
+texture = ExtResource("1_akn4t")
 script = ExtResource("1_kfjld")
