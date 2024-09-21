@@ -10,7 +10,8 @@ config_version=5
 
 [application]
 
-config/name="Balanced Light"
+config/name="Weird Sun"
+config/description="The People had become too orderly, so the forces of Chaos had to act in order to maintain Balance. Their chosen method was to make the Sun Weird, which had the unfortunate side effect of disturbing the Balance of Light and Dark. Your mission is to restore and maintain this Balance in spite of the Weird Sun."
 run/main_scene="res://view/view.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
