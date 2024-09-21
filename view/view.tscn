@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://7c25dwoty4a5"]
+
+[ext_resource type="PackedScene" uid="uid://bh4w07tra8k0q" path="res://earth/earth.tscn" id="1_ei2od"]
+[ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
+
+[node name="View" type="Node2D"]
+script = ExtResource("1_f8l58")
+
+[node name="Earth" parent="." instance=ExtResource("1_ei2od")]
+position = Vector2(576, 324)
+
+[node name="SpinBox" type="SpinBox" parent="."]
+offset_right = 83.0625
+offset_bottom = 31.0
+max_value = 86400.0
+value = 1.0
+
+[connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
