@@ -20,7 +20,8 @@ value = 1.0
 offset_top = 32.0
 offset_right = 192.0
 offset_bottom = 48.0
-min_value = -100.0
+min_value = -1.0
+max_value = 1.0
 
 [connection signal="value_changed" from="TimeScale" to="." method="_on_time_scale_value_changed"]
 [connection signal="value_changed" from="Thrust" to="." method="_on_thrust_value_changed"]
