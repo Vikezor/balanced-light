@@ -9,18 +9,18 @@ script = ExtResource("1_f8l58")
 [node name="Earth" parent="." instance=ExtResource("1_ei2od")]
 position = Vector2(576, 324)
 
-[node name="SpinBox" type="SpinBox" parent="."]
+[node name="TimeScale" type="SpinBox" parent="."]
 offset_right = 83.0625
 offset_bottom = 31.0
 min_value = 1.0
 max_value = 86400.0
 value = 1.0
 
-[node name="HSlider" type="HSlider" parent="."]
+[node name="Thrust" type="HSlider" parent="."]
 offset_top = 32.0
 offset_right = 192.0
 offset_bottom = 48.0
 min_value = -100.0
 
-[connection signal="value_changed" from="SpinBox" to="." method="_on_spin_box_value_changed"]
-[connection signal="value_changed" from="HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="TimeScale" to="." method="_on_time_scale_value_changed"]
+[connection signal="value_changed" from="Thrust" to="." method="_on_thrust_value_changed"]
