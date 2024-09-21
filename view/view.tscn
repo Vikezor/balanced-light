@@ -40,6 +40,10 @@ value = 1.0
 
 [node name="Bar" parent="CanvasLayer" instance=ExtResource("3_exp50")]
 
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_right = 141.0
+offset_bottom = 113.0
+
 [connection signal="set_sun_rotation" from="Earth/Sun" to="Earth" method="_on_sun_set_sun_rotation"]
 [connection signal="value_changed" from="CanvasLayer/Thrust" to="." method="_on_thrust_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/TimeScale" to="." method="_on_time_scale_value_changed"]
