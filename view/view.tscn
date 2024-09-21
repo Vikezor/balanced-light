@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://7c25dwoty4a5"]
+[gd_scene load_steps=25 format=3 uid="uid://7c25dwoty4a5"]
 
 [ext_resource type="PackedScene" uid="uid://bh4w07tra8k0q" path="res://earth/earth.tscn" id="1_ei2od"]
 [ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
 [ext_resource type="Texture2D" uid="uid://bahky0wwm76l7" path="res://view/Sun_bar_border.png" id="3_ediq2"]
+[ext_resource type="Texture2D" uid="uid://c0f5dqgjdayc1" path="res://view/Sun_indicator.png" id="3_ixh5o"]
+[ext_resource type="Script" path="res://view/sun.gd" id="4_7ky1w"]
 [ext_resource type="Texture2D" uid="uid://b8uv8dbggxler" path="res://view/Sun_bar.png" id="4_cvkye"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0kwuv"]
@@ -140,6 +142,11 @@ script = ExtResource("1_f8l58")
 [node name="Earth" parent="." instance=ExtResource("1_ei2od")]
 position = Vector2(576, 324)
 
+[node name="Sun" type="Sprite2D" parent="Earth"]
+position = Vector2(-207, 135)
+texture = ExtResource("3_ixh5o")
+script = ExtResource("4_7ky1w")
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Thrust" type="VSlider" parent="CanvasLayer"]
@@ -173,5 +180,6 @@ autoplay = "default"
 sprite_frames = SubResource("SpriteFrames_07kpq")
 autoplay = "default"
 
+[connection signal="set_sun_rotation" from="Earth/Sun" to="Earth" method="_on_sun_set_sun_rotation"]
 [connection signal="value_changed" from="CanvasLayer/Thrust" to="." method="_on_thrust_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/TimeScale" to="." method="_on_time_scale_value_changed"]
