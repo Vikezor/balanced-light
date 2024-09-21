@@ -2,6 +2,7 @@ class_name Sun
 extends Node2D
 
 var time = 0
+const physics_scale = 21600
 
 signal set_sun_rotation
 
@@ -15,12 +16,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	var scaled_delta = delta * physics_scale
 	var current_sun_rotation: float = get_sun_rotation()
 	set_sun_rotation.emit(current_sun_rotation)
 	position = Vector2(sin(current_sun_rotation), -cos(current_sun_rotation))*250
 	rotation = current_sun_rotation
-	time += delta
+	time += scaled_delta
 	
 
 func get_sun_rotation() -> float:
