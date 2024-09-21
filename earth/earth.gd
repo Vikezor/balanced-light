@@ -1,4 +1,4 @@
-extends Sprite2D
+extends Node2D
 
 
 var speed: float = -2 * PI / (24 * 60 * 60)
@@ -12,4 +12,4 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	speed += thrust * delta
-	rotation += speed * delta
+	$Diffuse.rotation += speed * delta

@@ -4,15 +4,18 @@
 [ext_resource type="Script" path="res://earth/earth.gd" id="1_kfjld"]
 [ext_resource type="Texture2D" uid="uid://caci4bhcd7vfw" path="res://earth/shading.tres" id="3_knlnm"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_4tbdb"]
-blend_mode = 3
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d1o4v"]
+light_mode = 2
 
-[node name="Earth" type="Sprite2D"]
-clip_children = 2
+[node name="Earth" type="Node2D"]
 texture_filter = 3
-texture = ExtResource("1_akn4t")
 script = ExtResource("1_kfjld")
 
-[node name="Shading" type="Sprite2D" parent="."]
-material = SubResource("CanvasItemMaterial_4tbdb")
+[node name="Diffuse" type="Sprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_d1o4v")
+texture = ExtResource("1_akn4t")
+
+[node name="Shading" type="PointLight2D" parent="."]
+blend_mode = 2
 texture = ExtResource("3_knlnm")
+offset = Vector2(0, -29)
