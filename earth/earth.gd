@@ -2,7 +2,6 @@ extends Node2D
 
 
 var speed: float = -2 * PI / (24 * 60 * 60)
-@export var thrust: float = 0
 @export var thrust_strength = 3
 @export var max_turning_speed = 6
 var time = 0
