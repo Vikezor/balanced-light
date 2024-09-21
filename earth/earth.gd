@@ -3,6 +3,7 @@ extends Node2D
 
 var speed: float = -2 * PI / (24 * 60 * 60)
 @export var thrust: float = 0
+var orbital_angular_velocity: float = -2 * PI / (365.256363004 * 24 * 60 * 60)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,3 +14,4 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	speed += thrust * delta
 	$Diffuse.rotation += speed * delta
+	$Shading.rotation += orbital_angular_velocity * delta
