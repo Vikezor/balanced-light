@@ -13,6 +13,7 @@ script = ExtResource("1_kfjld")
 
 [node name="Diffuse" type="Sprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_d1o4v")
+rotation = -1.5708
 texture = ExtResource("1_akn4t")
 
 [node name="Shading" type="PointLight2D" parent="."]
