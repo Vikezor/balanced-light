@@ -34,7 +34,7 @@ offset_left = 1136.0
 offset_right = 1152.0
 offset_bottom = 648.0
 min_value = 1.0
-max_value = 3.15581e+07
+max_value = 86400.0
 value = 1.0
 
 [node name="Bar" parent="CanvasLayer" instance=ExtResource("3_exp50")]
