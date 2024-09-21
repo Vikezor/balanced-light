@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bh4w07tra8k0q"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_mcl7q"]
+size = Vector2(32, 32)
+
+[node name="Earth" type="Sprite2D"]
+texture = SubResource("PlaceholderTexture2D_mcl7q")
