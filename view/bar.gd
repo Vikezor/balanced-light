@@ -10,5 +10,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(_delta: float) -> void:
+	$LightMask.polygon[2].x = light_length * bar_length
+	$LightMask.polygon[3].x = light_length * bar_length
+	$Separator.position.x = light_length * bar_length - bar_length / 2
