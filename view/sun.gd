@@ -47,7 +47,8 @@ func _process(delta: float) -> void:
 	
 
 static func get_sun_rotation(time_from_current:float = 0) -> float:
-	var current_cycle = (time + time_from_current) /  time_per_function
+	var current_cycle = get_current_cycle(time + time_from_current)
+	#var current_cycle = (time + time_from_current) /  time_per_function
 	#return 90
 	if (current_cycle - floor(current_cycle)> 0.9):
 		var t = (current_cycle - floor(current_cycle) - 0.9) * 5
@@ -64,6 +65,14 @@ static func get_sun_rotation(time_from_current:float = 0) -> float:
 	else:
 		var current_sun_function = sun_functions[pseudo_random(sun_seed, floor(current_cycle)) % 6]
 		return normalize_angle(current_sun_function, time + time_from_current)
+		
+static func get_current_cycle(t: float):
+	var c = 0
+	var temp = t
+	while temp > time_per_function * 15 / (c + 15):
+		temp -= time_per_function * 15 / (c + 15)
+		c += 1
+	return c + temp / (time_per_function * 10 / (c + 10))
 
 static func normalize_angle(function: Callable, t: float):
 	return fmod(function.call(t)*PI/3 + PI * 2 * 8, PI * 2)
