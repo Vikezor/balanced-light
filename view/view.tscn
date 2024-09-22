@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://7c25dwoty4a5"]
+[gd_scene load_steps=11 format=3 uid="uid://7c25dwoty4a5"]
 
 [ext_resource type="PackedScene" uid="uid://bh4w07tra8k0q" path="res://earth/earth.tscn" id="1_ei2od"]
 [ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://c0f5dqgjdayc1" path="res://view/Sun_indicator.png" id="3_ixh5o"]
 [ext_resource type="Script" path="res://view/sun.gd" id="4_7ky1w"]
 [ext_resource type="Script" path="res://view/sun_prediction.gd" id="6_1s4cl"]
+[ext_resource type="AudioStream" uid="uid://dcas0y3uk8rka" path="res://Galactic Rap.mp3" id="8_i4hyl"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bq01k"]
 
@@ -79,6 +80,12 @@ texture_filter = 3
 position = Vector2(576, 52.5)
 scale = Vector2(2, 5.5625)
 texture = ExtResource("3_ediq2")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i4hyl")
+volume_db = -10.0
+autoplay = true
+parameters/looping = true
 
 [connection signal="set_sun_rotation" from="Earth/Sun" to="Earth" method="_on_sun_set_sun_rotation"]
 [connection signal="value_changed" from="CanvasLayer/Thrust" to="." method="_on_thrust_value_changed"]
