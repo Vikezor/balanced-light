@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
 [ext_resource type="Texture2D" uid="uid://vd15fkwhvwnn" path="res://view/People.png" id="2_6fsrc"]
 [ext_resource type="Texture2D" uid="uid://bahky0wwm76l7" path="res://view/Sun_bar_border.png" id="3_ediq2"]
-[ext_resource type="PackedScene" uid="uid://cyn4a250hwtin" path="res://view/bar.tscn" id="3_exp50"]
+[ext_resource type="PackedScene" uid="uid://dg7chk46btcoq" path="res://view/bar.tscn" id="3_exp50"]
 [ext_resource type="Texture2D" uid="uid://c0f5dqgjdayc1" path="res://view/Sun_indicator.png" id="3_ixh5o"]
 [ext_resource type="Script" path="res://view/sun.gd" id="4_7ky1w"]
 [ext_resource type="Script" path="res://view/sun_prediction.gd" id="6_1s4cl"]
@@ -24,6 +24,7 @@ texture_filter = 3
 script = ExtResource("1_f8l58")
 
 [node name="Stars" type="CPUParticles2D" parent="."]
+light_mask = 2
 texture_filter = 3
 material = SubResource("CanvasItemMaterial_bq01k")
 position = Vector2(576, 166)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cyn4a250hwtin"]
+[gd_scene load_steps=23 format=3 uid="uid://dg7chk46btcoq"]
 
 [ext_resource type="Texture2D" uid="uid://bahky0wwm76l7" path="res://view/Sun_bar_border.png" id="1_eoama"]
 [ext_resource type="Script" path="res://view/bar.gd" id="2_txq73"]
