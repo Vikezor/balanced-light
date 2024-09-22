@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://7c25dwoty4a5"]
+[gd_scene load_steps=10 format=3 uid="uid://7c25dwoty4a5"]
 
 [ext_resource type="PackedScene" uid="uid://bh4w07tra8k0q" path="res://earth/earth.tscn" id="1_ei2od"]
 [ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
@@ -8,9 +8,31 @@
 [ext_resource type="Script" path="res://view/sun.gd" id="4_7ky1w"]
 [ext_resource type="Script" path="res://view/sun_prediction.gd" id="6_1s4cl"]
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bq01k"]
+
+[sub_resource type="Gradient" id="Gradient_yynh6"]
+offsets = PackedFloat32Array(0, 0.486667, 0.98)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
 [node name="View" type="Node2D"]
 texture_filter = 3
 script = ExtResource("1_f8l58")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 3
+material = SubResource("CanvasItemMaterial_bq01k")
+position = Vector2(576, 166)
+amount = 100
+lifetime = 5.0
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_rect_extents = Vector2(600, 500)
+gravity = Vector2(0, 0)
+scale_amount_min = 0.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_yynh6")
+hue_variation_min = 0.46
+hue_variation_max = 0.46
 
 [node name="Earth" parent="." instance=ExtResource("1_ei2od")]
 position = Vector2(576, 324)
