@@ -41,3 +41,4 @@ right_thrust={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.110141, 0.05897, 0.144267, 1)

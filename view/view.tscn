@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://7c25dwoty4a5"]
+[gd_scene load_steps=8 format=3 uid="uid://7c25dwoty4a5"]
 
 [ext_resource type="PackedScene" uid="uid://bh4w07tra8k0q" path="res://earth/earth.tscn" id="1_ei2od"]
 [ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
+[ext_resource type="Texture2D" uid="uid://bahky0wwm76l7" path="res://view/Sun_bar_border.png" id="3_ediq2"]
 [ext_resource type="PackedScene" path="res://view/bar.tscn" id="3_exp50"]
 [ext_resource type="Texture2D" uid="uid://c0f5dqgjdayc1" path="res://view/Sun_indicator.png" id="3_ixh5o"]
 [ext_resource type="Script" path="res://view/sun.gd" id="4_7ky1w"]
+[ext_resource type="Script" path="res://view/sun_prediction.gd" id="6_1s4cl"]
 
 [node name="View" type="Node2D"]
 texture_filter = 3
@@ -12,6 +14,7 @@ script = ExtResource("1_f8l58")
 
 [node name="Earth" parent="." instance=ExtResource("1_ei2od")]
 position = Vector2(576, 324)
+scale = Vector2(2, 2)
 
 [node name="Sun" type="Sprite2D" parent="Earth"]
 position = Vector2(-207, 135)
@@ -39,6 +42,21 @@ max_value = 3.15581e+07
 value = 1.0
 
 [node name="Bar" parent="CanvasLayer" instance=ExtResource("3_exp50")]
+position = Vector2(576, 612)
+scale = Vector2(2, 2)
+
+[node name="Line2D" type="Line2D" parent="CanvasLayer"]
+position = Vector2(-7, -2.04839)
+scale = Vector2(1, 1.43548)
+width = 3.0
+script = ExtResource("6_1s4cl")
+n = 100
+
+[node name="SunBarBorder" type="Sprite2D" parent="CanvasLayer"]
+texture_filter = 3
+position = Vector2(576, 52.5)
+scale = Vector2(2, 5.5625)
+texture = ExtResource("3_ediq2")
 
 [connection signal="set_sun_rotation" from="Earth/Sun" to="Earth" method="_on_sun_set_sun_rotation"]
 [connection signal="value_changed" from="CanvasLayer/Thrust" to="." method="_on_thrust_value_changed"]
