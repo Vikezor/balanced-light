@@ -93,5 +93,4 @@ static func pseudo_random(x: int, y: int) -> int:
 static func lerp_angle(from, to, weight):
 	var x: Vector2 = Vector2(sin(from), cos(from))
 	var y: Vector2 = Vector2(sin(to), cos(to))
-	var z: Vector2 = x * (1 - weight) + y * weight
-	return fmod(atan2(z.y, z.x) + PI * 2 * 8, 2* PI)
+	return x.lerp(y, weight).angle
