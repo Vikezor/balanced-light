@@ -1,13 +1,17 @@
-[gd_scene load_steps=11 format=3 uid="uid://7c25dwoty4a5"]
+[gd_scene load_steps=15 format=3 uid="uid://7c25dwoty4a5"]
 
 [ext_resource type="PackedScene" uid="uid://bh4w07tra8k0q" path="res://earth/earth.tscn" id="1_ei2od"]
 [ext_resource type="Script" path="res://view/view.gd" id="1_f8l58"]
+[ext_resource type="Texture2D" uid="uid://vd15fkwhvwnn" path="res://view/People.png" id="2_6fsrc"]
 [ext_resource type="Texture2D" uid="uid://bahky0wwm76l7" path="res://view/Sun_bar_border.png" id="3_ediq2"]
-[ext_resource type="PackedScene" path="res://view/bar.tscn" id="3_exp50"]
+[ext_resource type="PackedScene" uid="uid://dg7chk46btcoq" path="res://view/bar.tscn" id="3_exp50"]
 [ext_resource type="Texture2D" uid="uid://c0f5dqgjdayc1" path="res://view/Sun_indicator.png" id="3_ixh5o"]
 [ext_resource type="Script" path="res://view/sun.gd" id="4_7ky1w"]
 [ext_resource type="Script" path="res://view/sun_prediction.gd" id="6_1s4cl"]
 [ext_resource type="AudioStream" uid="uid://dcas0y3uk8rka" path="res://Galactic Rap.mp3" id="8_i4hyl"]
+[ext_resource type="FontFile" uid="uid://b7dlxvnvobsca" path="res://pixellocale-v-1-4.ttf" id="9_ltpro"]
+[ext_resource type="Script" path="res://view/Restart.gd" id="10_57dg2"]
+[ext_resource type="Script" path="res://view/Score.gd" id="11_qvnow"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_bq01k"]
 
@@ -19,12 +23,13 @@ colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 texture_filter = 3
 script = ExtResource("1_f8l58")
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Stars" type="CPUParticles2D" parent="."]
 texture_filter = 3
 material = SubResource("CanvasItemMaterial_bq01k")
 position = Vector2(576, 166)
 amount = 100
 lifetime = 5.0
+preprocess = 5.0
 lifetime_randomness = 0.5
 emission_shape = 3
 emission_rect_extents = Vector2(600, 500)
@@ -40,13 +45,35 @@ position = Vector2(576, 324)
 scale = Vector2(2, 2)
 
 [node name="Sun" type="Sprite2D" parent="Earth"]
+light_mask = 2
 position = Vector2(-207, 135)
 texture = ExtResource("3_ixh5o")
 script = ExtResource("4_7ky1w")
 
+[node name="PeopleFlying" type="CPUParticles2D" parent="Earth"]
+texture_filter = 3
+material = SubResource("CanvasItemMaterial_bq01k")
+scale = Vector2(0.5, 0.5)
+emitting = false
+amount = 100
+lifetime = 10.0
+texture = ExtResource("2_6fsrc")
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.21
+initial_velocity_max = 75.31
+angular_velocity_min = -720.0
+angular_velocity_max = 720.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_yynh6")
+hue_variation_min = 0.46
+hue_variation_max = 0.46
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Thrust" type="VSlider" parent="CanvasLayer"]
+visible = false
 offset_left = 1117.0
 offset_top = 388.0
 offset_right = 1133.0
@@ -56,6 +83,7 @@ max_value = 1.0
 step = 0.1
 
 [node name="TimeScale" type="VSlider" parent="CanvasLayer"]
+visible = false
 offset_left = 1136.0
 offset_top = 388.0
 offset_right = 1152.0
@@ -65,7 +93,7 @@ max_value = 3.15581e+07
 value = 1.0
 
 [node name="Bar" parent="CanvasLayer" instance=ExtResource("3_exp50")]
-position = Vector2(576, 612)
+position = Vector2(577, 612)
 scale = Vector2(2, 2)
 
 [node name="Line2D" type="Line2D" parent="CanvasLayer"]
@@ -81,12 +109,38 @@ position = Vector2(576, 52.5)
 scale = Vector2(2, 5.5625)
 texture = ExtResource("3_ediq2")
 
+[node name="Restart" type="Label" parent="CanvasLayer"]
+visible = false
+texture_filter = 3
+offset_left = 427.0
+offset_top = 488.0
+offset_right = 731.0
+offset_bottom = 532.0
+theme_override_fonts/font = ExtResource("9_ltpro")
+theme_override_font_sizes/font_size = 20
+text = "Press \"Space\" to restart"
+horizontal_alignment = 1
+script = ExtResource("10_57dg2")
+
+[node name="Score" type="Label" parent="CanvasLayer"]
+offset_left = 44.0
+offset_top = 26.0
+offset_right = 157.0
+offset_bottom = 70.0
+theme_override_fonts/font = ExtResource("9_ltpro")
+theme_override_font_sizes/font_size = 20
+text = "Score: 10"
+script = ExtResource("11_qvnow")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_i4hyl")
 volume_db = -10.0
 autoplay = true
 parameters/looping = true
 
+[connection signal="game_over_signal" from="Earth" to="CanvasLayer/Restart" method="_on_earth_game_over_signal"]
+[connection signal="game_over_signal" from="Earth" to="CanvasLayer/Score" method="_on_earth_game_over_signal"]
+[connection signal="set_light_length" from="Earth" to="CanvasLayer/Bar" method="_on_earth_set_light_length"]
 [connection signal="set_sun_rotation" from="Earth/Sun" to="Earth" method="_on_sun_set_sun_rotation"]
 [connection signal="value_changed" from="CanvasLayer/Thrust" to="." method="_on_thrust_value_changed"]
 [connection signal="value_changed" from="CanvasLayer/TimeScale" to="." method="_on_time_scale_value_changed"]

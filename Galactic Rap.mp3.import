@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/Galactic Rap.mp3-b2bb2e9e43a88a09699a8681d22b
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

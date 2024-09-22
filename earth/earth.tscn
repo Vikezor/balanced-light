@@ -1,11 +1,78 @@
-[gd_scene load_steps=5 format=3 uid="uid://bh4w07tra8k0q"]
+[gd_scene load_steps=19 format=3 uid="uid://bh4w07tra8k0q"]
 
 [ext_resource type="Texture2D" uid="uid://yxkm4o813bik" path="res://earth/earth.tres" id="1_akn4t"]
 [ext_resource type="Script" path="res://earth/earth.gd" id="1_kfjld"]
-[ext_resource type="Texture2D" uid="uid://caci4bhcd7vfw" path="res://earth/shading.tres" id="3_knlnm"]
+[ext_resource type="Texture2D" uid="uid://bpjp1hc10f480" path="res://earth/shading.png" id="4_j45uh"]
+[ext_resource type="Texture2D" uid="uid://cd16hc550tp4i" path="res://earth/Earth_loss.png" id="4_m41eh"]
+[ext_resource type="AudioStream" uid="uid://2qxyd8kpnnrp" path="res://Cartoon_scream.wav" id="5_kwvk1"]
+[ext_resource type="AudioStream" uid="uid://b0hdcbbjr3ll1" path="res://Fire.wav" id="6_lp647"]
+[ext_resource type="AudioStream" uid="uid://doukp4o7gjf0l" path="res://Thruster.wav" id="7_nr61b"]
+[ext_resource type="AudioStream" uid="uid://df45j22necgpf" path="res://Ice_no_loop.wav" id="8_kmvtd"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_d1o4v"]
 light_mode = 2
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jaym8"]
+atlas = ExtResource("4_m41eh")
+region = Rect2(0, 0, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sde11"]
+atlas = ExtResource("4_m41eh")
+region = Rect2(0, 86, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ivhc"]
+atlas = ExtResource("4_m41eh")
+region = Rect2(0, 172, 86, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_me3ls"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jaym8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sde11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ivhc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wdqm"]
+atlas = ExtResource("4_m41eh")
+region = Rect2(0, 258, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nrgb8"]
+atlas = ExtResource("4_m41eh")
+region = Rect2(0, 344, 86, 86)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lum5x"]
+atlas = ExtResource("4_m41eh")
+region = Rect2(0, 430, 86, 86)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kq1am"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wdqm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nrgb8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lum5x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dvoc"]
+atlas = ExtResource("4_j45uh")
+region = Rect2(0, 0, 500, 500)
 
 [node name="Earth" type="Node2D"]
 texture_filter = 3
@@ -16,7 +83,28 @@ material = SubResource("CanvasItemMaterial_d1o4v")
 rotation = -1.5708
 texture = ExtResource("1_akn4t")
 
+[node name="Fire" type="AnimatedSprite2D" parent="Diffuse"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_me3ls")
+
+[node name="Ice" type="AnimatedSprite2D" parent="Diffuse"]
+visible = false
+sprite_frames = SubResource("SpriteFrames_kq1am")
+frame_progress = 0.198448
+
 [node name="Shading" type="PointLight2D" parent="."]
 blend_mode = 2
-texture = ExtResource("3_knlnm")
-offset = Vector2(0, -29)
+texture = SubResource("AtlasTexture_1dvoc")
+
+[node name="Scream" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_kwvk1")
+pitch_scale = 0.8
+
+[node name="Fire_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_lp647")
+
+[node name="Thruster" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nr61b")
+
+[node name="Ice_noise" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_kmvtd")

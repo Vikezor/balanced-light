@@ -48,6 +48,7 @@ func _process(delta: float) -> void:
 
 static func get_sun_rotation(time_from_current:float = 0) -> float:
 	var current_cycle = (time + time_from_current) /  time_per_function
+	#return 90
 	if (current_cycle - floor(current_cycle)> 0.9):
 		var t = (current_cycle - floor(current_cycle) - 0.9) * 5
 		
